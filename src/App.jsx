@@ -28,11 +28,14 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // function for fetching movies
-  const fetchMovies = async () => {
+  const fetchMovies = async (query = '') => {
     setIsLoading(true);
     setErrorMessage("");
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query 
+      // query should be optimised to be displayed in the URL or to be called as an API, we use encodeURI(query)
+      ? `${API_BASE_URL}/search/movie?query=${encodeURI(query)}`
+      : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
       // console.log(response);
       // alert(response.ok)
@@ -67,8 +70,8 @@ const App = () => {
 
   // Calling the fetchMovies() instantly when components are loaded
   useEffect(() => {
-    fetchMovies();
-  }, [])
+    fetchMovies(searchTerm);
+  }, [searchTerm])    //whenever [searchTerm] it will re-call the API
 
   console.log(movieList);
 
