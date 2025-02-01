@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Search from "./components/Search"
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
+import { updateSearchCount } from "../appwrite";
 
 
 // this is the TMDB end point URL
@@ -55,12 +56,14 @@ const App = () => {
       }
 
       setMovieList(data.results || []);
-      console.log(data.results[0].poster_path);
+      // console.log(data.results[0].poster_path);
 
-
+      if(query && data.results.setIsLoading > 0){
+        await updateSearchCount(query, data.results[0]);
+      }
     } catch (error) {
       // Even we can display this error on Browser using useState() hook
-      console.error(`Error fetching movies : ${error}`);
+      // console.error(`Error fetching movies : ${error}`);
       setErrorMessage(`Error fetching movies : ${error}`)
     } finally {
       // console.log("Definitily Run This one");
@@ -71,9 +74,9 @@ const App = () => {
   // Calling the fetchMovies() instantly when components are loaded
   useEffect(() => {
     fetchMovies(searchTerm);
-  }, [searchTerm])    //whenever [searchTerm] it will re-call the API
+  }, [searchTerm])    //whenever [searchTerm] it will change re-call the API
 
-  console.log(movieList);
+  // console.log(movieList);
 
   return (
     <main>
