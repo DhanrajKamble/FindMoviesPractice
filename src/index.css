@@ -5,4 +5,125 @@
 
 body{
   background-color: aqua;
+  background-image: url("./hero-bg.png");
+  background-repeat: no-repeat; /* Prevents repeating */
+  background-size: cover; /* Ensures it covers the viewport */
+  background-position: center; /* Centers the image */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: aliceblue;
+}
+
+span{
+  color: blueviolet;
+  font-size: 2.5rem;
+}
+
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
+
+.heading img{
+  display: block;
+}
+
+.header-content{
+  padding-bottom: 1.5rem;
+}
+
+.logo{
+  margin-top: 2rem;
+  width: 50px;
+}
+
+.search-container{
+  display: flex;
+  justify-content: center;
+}
+
+.search{
+  background-color: rgba(76, 6, 76, 0.47);
+  width: 50rem;
+  display: flex;
+  border-radius: 15px;
+}
+
+.search img{
+  padding: 2rem;
+}
+.search input{
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  background-color: rgba(76, 6, 76, 0);
+  cursor: pointer;
+  color: aliceblue;
+}
+
+section h2{
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.spinner{
+  width: 50px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  }
+
+.movie-card{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), 
+                -5px -5px 10px rgba(0, 0, 0, 0.3), 
+                5px -5px 10px rgba(0, 0, 0, 0.3), 
+                -5px 5px 10px rgba(0, 0, 0, 0.3);
+                padding: 1rem;
+                border-radius: 15px;
+                /* width: calc(25% - 16px); */
+}
+
+.movie-poster{
+  width: 15rem;
+  border-radius: 10px;
+}
+
+.card-content{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.dot{
+  color: grey;
+  font-size: 1.2rem;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+ul{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  gap: 16px; 
 }
